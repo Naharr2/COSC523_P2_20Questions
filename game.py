@@ -1,9 +1,22 @@
+import random
+
+
 class QuestionsGame:
     def __init__(self) -> None:
         self.nounFile = "noun_universe.txt"
         self.nouns = self._get_nouns()
         self.propertiesFile = "property_universe.txt"
         self.properties = self._get_properties()
+        self.questionsAsked = 0
+        # we can change these later, just using them for now
+        self.general_categories = [
+            "peron",
+            "place",
+            "thing",
+            "animal",
+            "plant",
+            "action",
+        ]
 
     def _get_nouns(self) -> list[str]:
         with open(self.nounFile, "r") as f:
@@ -15,8 +28,63 @@ class QuestionsGame:
             properties = f.read().splitlines()
         return properties
 
+    def error_no_nouns(self) -> bool:
+        if self.nouns == []:
+            print("Error: No nouns available to choose from.")
+            return True
+        return False
+
+    def error_no_properties(self) -> bool:
+        if self.properties == []:
+            print("Error: No properties available to choose from.")
+            return True
+        return False
+
+    def _validate_user_response(self, response: str) -> str:
+        response = response.lower()
+        if response == "exit":
+            print("Exiting the game. Goodbye!")
+            exit(0)
+        while response not in ["yes", "no"]:
+            response = input("Please respond with 'yes' or 'no': ").lower()
+        return response
+
+    def _form_guess(self) -> str:
+        if self.questionsAsked == 0:
+            # beginning of the game, pick one of the general categories
+            category = random.choice(self.general_categories)
+            return f"Is it a {category}?"
+        elif self.questionsAsked < 20:
+            #  middle of the game, this will be based on our prev guesses and responses
+            return "Thinking!"  # placeholder for now
+        else:
+            # end of game, must make a guess
+            # expected logic: if remaining nouns is 1, guess that noun
+            # else, pick a random noun from remaining nouns
+            return "Are you thinking of [noun]?"  # replace with noun
+
+    def startGame(self) -> None:
+        if self.error_no_nouns() or self.error_no_properties():
+            exit(1)
+
+        print("Welcome to Team 23's 20 Questions Game!\n")
+        print(
+            "Please pick a noun from the noun universe, and I will try to guess it!\n"
+        )
+        print(
+            "I will ask you yes or no questions, please only respond with 'yes' or 'no'.\n"
+        )
+        print("You can type 'exit' at any time to quit the game.\n")
+        print("Ready? Let's begin!\n")
+
+        while self.questionsAsked <= 20:
+            guess = self._form_guess()
+            print(guess)
+            user_response = input("Your response (yes/no): ")
+            validated_response = self._validate_user_response(user_response)
+            self.questionsAsked += 1
+
 
 if __name__ == "__main__":
     game = QuestionsGame()
-    print("Nouns:", game.nouns)
-    print("Properties:", game.properties)
+    game.startGame()
