@@ -17,6 +17,13 @@ class QuestionsGame:
             "plant",
             "action",
         ]
+        # TODO: change when we get real file
+        self.lookupFile = "lookup_table.txt"
+        self.lookup_table = self._get_lookup_table()
+        self.possible_nouns = None
+
+    def _get_lookup_table(self) -> dict[str, list[str]]:
+        return {}
 
     def _get_nouns(self) -> list[str]:
         with open(self.nounFile, "r") as f:
@@ -66,6 +73,8 @@ class QuestionsGame:
     def startGame(self) -> None:
         if self.error_no_nouns() or self.error_no_properties():
             exit(1)
+        self.guessable_nouns = self.nouns
+        self.questionsAsked = 0
 
         print("Welcome to Team 23's 20 Questions Game!\n")
         print(
