@@ -19,8 +19,9 @@ class QuestionsGame:
             "action",
         ]
         self.lookupFile = "ontology.pickle"
-        self.lookup_table = self._get_lookup_table()
-        self.possible_nouns = None
+        self.original_lookup_table = self._get_lookup_table()
+        self.modified_lookup_table = self.original_lookup_table
+        self.possible_nouns = self.nouns
 
     def _get_lookup_table(self) -> dict:
         try:
@@ -61,6 +62,33 @@ class QuestionsGame:
         while response not in ["yes", "no"]:
             response = input("Please respond with 'yes' or 'no': ").lower()
         return response
+
+    def _find_best_guess(self):
+        best_question = None
+        max_score = -1
+
+        # guess by category
+        # get all categories in our current guess pool
+        categories = []
+        for noun in self.modified_lookup_table:
+            noun_categories = self.modified_lookup_table[noun]["categories"]
+            for category in noun_categories:
+                if category not in categories:
+                    categories.append(category)
+        # find out how many nouns in our current guess pool have the category we're thinking of
+        for category in categories:  # look at each category
+            yes_count = 0
+            # look at each noun in our current guess pool
+            for noun in self.possible_nouns:
+                if category in self.modified_lookup_table[noun]["categories"]:
+                    yes_count += 1
+            # create the score for this category
+            category_score = yes_count * (len(self.possible_nouns) - yes_count)
+            if category_score > max_score:
+                max_score = category_score
+                best_question = f"Is it a {category}?"
+                yes_count = None
+        return best_question
 
     def _form_guess(self) -> str:
         if self.questionsAsked == 0:
