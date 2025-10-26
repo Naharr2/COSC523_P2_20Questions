@@ -1,4 +1,5 @@
 import random
+import pickle
 
 
 class QuestionsGame:
@@ -17,13 +18,18 @@ class QuestionsGame:
             "plant",
             "action",
         ]
-        # TODO: change when we get real file
-        self.lookupFile = "lookup_table.txt"
+        self.lookupFile = "ontology.pickle"
         self.lookup_table = self._get_lookup_table()
         self.possible_nouns = None
 
-    def _get_lookup_table(self) -> dict[str, list[str]]:
-        return {}
+    def _get_lookup_table(self) -> dict:
+        try:
+            with open(self.lookupFile, "rb") as f:
+                lookup_table = pickle.load(f)
+            return lookup_table
+        except FileNotFoundError:
+            print("Lookup table file not found. Please provide a table.")
+            exit(1)
 
     def _get_nouns(self) -> list[str]:
         with open(self.nounFile, "r") as f:
