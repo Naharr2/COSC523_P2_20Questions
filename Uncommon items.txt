@@ -1,0 +1,148 @@
+﻿action figure
+air start unit
+air traffic controller
+airliner
+airplane
+airship
+airport
+altimeter
+arcade machine
+atv
+barbell
+barge
+bench press machine
+bicycle
+binoculars
+blimp
+boat
+bulldozer
+bus
+camera drone
+camp stove
+campervan
+car tire
+catamaran
+chainsaw
+chessboard
+church
+cockpit
+commercial jet
+compass
+crane
+crossbow
+de-icing truck
+dumbbell
+elevator
+excavator
+factory
+fighter jet
+firetruck
+fuselage
+generator
+glider
+gondola
+hang glider
+hangar
+helicopter
+helipad
+hospital
+hoverboard
+hovercraft
+jet
+jet ski
+katana
+kayak
+kettlebell
+ladder truck
+landing gear
+lat pulldown machine
+leg curl machine
+leg extension machine
+leg press
+limousine
+maintenance base
+medical scanner
+microscope
+monorail
+motorcycle
+nuclear reactor
+paraglider
+pirate ship
+plane
+police car
+private jet
+propeller
+robot
+rocket
+rope ladder
+rowboat
+rowing machine
+satellite
+school bus
+scuba gear
+seaplane
+segway
+ship
+ski lift
+skyscraper
+smith machine bench press
+smith machine squat
+snowmobile
+spaceship
+speedboat
+stationary bike
+stair climber
+submarine
+surfboard
+telescope
+tent
+tractor
+train
+train station
+tram
+tramcar
+truck
+tugboat
+vacuum pump
+wheelchair
+wind turbine
+workbench
+bandit1200
+cbr1000rr
+cbr600rr
+daytona675
+desertx
+diavel
+duke1290
+duke200
+duke390
+duke790
+duke890
+gsxr1000
+gsxr600
+gsxr750
+h2r
+hayabusa
+monster1200
+monster821
+mt07
+mt09
+panigalev2
+panigalev4
+rninet
+r1
+r6
+s1000r
+s1000rr
+scrambler
+speedtriple
+streetfighter
+streettriple
+sv650
+tuono
+vstrom1050
+vstrom650
+zx10r
+zx6r
+ktmrc390
+ktmrc8

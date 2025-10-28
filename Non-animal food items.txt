@@ -1,0 +1,105 @@
+apple
+avocado
+bagel
+banana
+bread
+burrito
+cake
+caesar salad
+carrot
+carrot sticks
+cereal with milk
+chai
+cheese
+cheeseburger
+cherry
+chocolate
+chocolate bar
+chocolate cake
+coconut
+coffee
+cookie
+corn
+cracker
+cranberry
+croissant
+cup
+cup of coffee
+cupcake
+currant
+curry
+date
+donut
+dragonfruit
+dumpling
+durian
+egg
+fig
+grape
+grain
+ice
+ice cream
+juice
+kiwi
+lasagna
+lemon
+lettuce
+lime
+lollipop
+mac & cheese
+mango
+meal
+mojito
+mulberry
+nectarine
+oatmeal
+olive
+orange
+pancake
+pancakes
+papaya
+passionfruit
+pasta
+peach
+pear
+persimmon
+pho
+pineapple
+pineapple slice
+pina colada
+pizza
+pizza slice
+pomegranate
+popcorn
+potato
+protein shake
+pumpkin
+ramen bowl
+raspberry
+rice
+roast beef
+roast turkey
+roast vegetables
+rum punch
+salad
+salt
+sandwich
+smoothie
+snack
+soda
+soup
+spaghetti
+strawberry
+sugar
+sugarcane
+sushi
+sushi roll
+taco
+tea
+tomato
+tortilla
+vegetable
+water
+wheat
+wine
+yogurt

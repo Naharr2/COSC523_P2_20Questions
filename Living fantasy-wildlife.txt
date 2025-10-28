@@ -1,0 +1,301 @@
+﻿aardvark
+akita
+albatross
+alligator
+altaria
+ampharos
+anaconda
+anole
+ant
+anteater
+antelope
+ape
+arcanine
+armadillo
+arctic fox
+arctic wolf
+arizona bark scorpion
+axolotl
+baboon
+badger
+bald eagle
+barn owl
+bat
+bear
+bearded dragon
+beaver
+bee
+beetle
+betta fish
+bighorn sheep
+bird
+bison
+black bear
+black panther
+blue jay
+boa
+boar
+bobcat
+bongo
+bottlenose dolphin
+box turtle
+brown bear
+bull
+bullfrog
+butterfly
+buzzard
+camel
+canary
+capybara
+cardinal
+caribou
+cassowary
+cat
+centipede
+chameleon
+cheetah
+chimpanzee
+chipmunk
+cobra
+cockatoo
+cougar
+coyote
+crane
+cricket
+crocodile
+crow
+dalmatian
+deer
+dingo
+dog
+dolphin
+donkey
+dragon
+dragonair
+dragonite
+dratini
+duck
+eagle
+earthworm
+eastern fence lizard
+eevee
+egret
+elephant
+elk
+emu
+falcon
+fearow
+ferret
+finch
+firefly
+flamingo
+fox
+frog
+gaara 
+gargoyle gecko
+gazelle
+gecko
+gerbil
+german shepherd
+gila monster
+giraffe
+goose
+gorilla
+grizzly bear
+groundhog
+guinea pig
+gyarados
+hamster
+hare
+hawk
+hedgehog
+hippopotamus
+horned lizard
+hornet
+horse
+hummingbird
+hyena
+iguana
+impala
+inchworm
+jaguar
+jay
+jellyfish
+kangaroo
+koala
+komodo dragon
+krabby
+ladybug
+lama
+lampent
+lark
+leopard
+liger
+lion
+lizard
+llama
+lynx
+magikarp
+mako shark
+mallard
+manatee
+mantis
+mareep
+meerkat
+meowth
+mew
+mewtwo
+moltres
+monkey
+moose
+moth
+mouse
+mr. mime
+mule
+narwhal
+newfoundland
+nile monitor
+ninetales
+ocelot
+octopus
+okapi
+omanyte
+omastar
+opossum
+orangutan
+orca
+orc
+oriole
+osprey
+ostrich
+otter
+owl
+ox
+panda
+pangolin
+panther
+parakeet
+parrot
+peacock
+pelican
+penguin
+pidgeot
+pidgeotto
+pidgey
+pikachu
+piranha
+platypus
+polar bear
+pony
+poodle
+porcupine
+possum
+pterosaur
+puffin
+puma
+python
+quail
+quokka
+rabbit
+raccoon
+raticate
+rattata
+rattlesnake
+rayquaza
+red fox
+reindeer
+rhinoceros
+robin
+rooster
+salamander
+salmon
+sandshrew
+sandstorm dragon
+scorpion
+seahorse
+seal
+sealeo
+seel
+shark
+sheep
+shedinja
+shellfish
+shellder
+skink
+skitty
+skunk
+slaking
+slowbro
+slowpoke
+slugma
+smeargle
+snail
+snake
+sneasel
+snivy
+snorlax
+snow leopard
+sobble
+spearow
+spider
+spinda
+spoink
+squirtle
+staraptor
+staravia
+starly
+starmie
+steelix
+stork
+stoutland
+stunky
+sunfish
+swan
+swellow
+swift fox
+tarantula
+tentacool
+tentacruel
+throh
+thundurus
+tiger
+tortoise
+toucan
+toxicroak
+tree monitor
+tropius
+trout
+turkey
+turtle
+typhlosion
+umbreon
+unown
+urchin
+vaporeon
+venomoth
+venonat
+venusaur
+viper
+vulture
+walrus
+wartortle
+weasel
+weedle
+weimaraner
+whale
+whippet
+wingull
+wobbuffet
+wolf
+wombat
+worm
+wyrm 
+xatu
+yak
+yanma
+yeti 
+zapdos
+zebra
+zebstrika
+zekrom
+zubat

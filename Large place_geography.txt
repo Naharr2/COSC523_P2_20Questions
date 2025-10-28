@@ -1,0 +1,173 @@
+﻿alaska
+amazon rainforest
+antarctica
+arizona
+arkansas
+atlantic ocean
+australia
+baltimore
+beijing
+boston
+brazil
+california
+canada
+chicago
+china
+colorado
+colosseum
+columbia
+connecticut
+continent
+cuba
+dallas
+delaware
+denmark
+desert
+detroit
+district of columbia
+dubai
+egypt
+europe
+florida
+forest
+fort worth
+france
+fresno
+georgia
+germany
+glacier
+global
+gorge
+grand canyon
+greece
+gulf
+hawaii
+hill
+honolulu
+houston
+iceland
+illinois
+india
+indiana
+indonesia
+iraq
+ireland
+island
+israel
+italy
+japan
+jerusalem
+kansas
+kentucky
+korea
+las vegas
+london
+los angeles
+louisiana
+madrid
+maine
+malaysia
+maryland
+massachusetts
+meadow
+mexico
+miami
+michigan
+minnesota
+mississippi
+missouri
+montana
+moon
+morocco
+mount everest
+mount kilimanjaro
+mountain
+mountain range
+naples
+nebraska
+nevada
+new hampshire
+new jersey
+new mexico
+new orleans
+new york
+new york city
+new zealand
+niagara falls
+north america
+north carolina
+north dakota
+northern mariana islands
+norway
+oasis
+ocean
+ohio
+oklahoma
+oklahoma city
+omaha
+oregon
+pacific ocean
+pakistan
+panama
+paris
+pennsylvania
+peninsula
+philadelphia
+phoenix
+pittsburgh
+plateau
+prairie
+puerto rico
+rhode island
+ridge
+rio de janeiro
+river
+riverbank
+romania
+san diego
+san francisco
+santa fe
+saudi arabia
+scotland
+seattle
+seoul
+shanghai
+singapore
+south africa
+south america
+south carolina
+south dakota
+spain
+state
+suburb
+sweden
+switzerland
+sydney
+tanzania
+taiga
+tajikistan
+temple
+tennessee
+texas
+tokyo
+tucson
+tulsa
+ukraine
+united arab emirates
+united kingdom
+united states
+united states of america
+utah
+vatican city
+venice
+vermont
+village
+virginia
+virginia beach
+volcano
+washington
+washington dc
+west virginia
+wisconsin
+wyoming
+yukon
