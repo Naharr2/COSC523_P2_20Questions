@@ -1,0 +1,140 @@
+﻿alarm clock
+apron
+backpack
+bag
+ball
+balloon
+battery pack
+bed
+bedroom
+bell
+blanket
+blender
+block
+book
+bookshelf
+boot
+bottle
+box
+bucket
+broom
+brush
+calculator
+calendar
+camera
+candle
+car
+car key
+carpet
+cart
+ceiling
+ceiling fan
+chair
+charger
+clock
+clothes
+coat
+comb
+computer
+cord
+couch
+cup
+cupboard
+curtain
+desk
+desk lamp
+dishwasher
+door
+doorknob
+drawer
+drill
+dryer
+fan
+floor
+fork
+frame
+fridge
+frying pan
+glass (drinking glass)
+glasses
+glove
+hairbrush
+hammer
+hand saw
+hat
+helmet
+hook
+house
+jacket
+jar
+jeans
+key
+keyboard
+knife
+lamp
+laptop
+laundry basket
+light
+light bulb
+lock
+mirror
+mop
+mouse
+mousepad
+nail
+notebook
+oven
+painter’s tape
+pan
+paperclip
+pen
+pencil
+phone
+photo
+picture frame
+pillow
+plug
+printer
+radio
+rake
+remote
+ruler
+saw
+scarf
+scissors
+screwdriver
+shelf
+shirt
+shoe
+shoes
+sink
+smartphone
+soap dispenser
+sock
+socks
+sofa
+spoon
+stapler
+stove
+suitcase
+switch
+table
+tablet
+television
+telescope
+thermometer
+tire
+toaster
+toilet
+toothbrush
+towel
+toy
+trash can
+vacuum
+vacuum cleaner
+vase
+wallet
+washing machine
+watch
+window
+wrench

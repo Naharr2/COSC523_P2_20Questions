@@ -1,0 +1,50 @@
+﻿acacia
+algae
+apple tree
+aquatic plant
+azalea
+bamboo
+banana plant
+basil
+blueberry bush
+bush
+cactus
+cattail
+cedar tree
+cherry blossom tree
+cilantro
+clover
+dahlia
+dandelion
+fern
+flower
+grass
+hibiscus
+hydrangea
+ivy
+lilac
+magnolia
+mangrove forest
+maple tree
+marigold
+meadow
+moss
+nettle
+oak tree
+olive tree
+orchid
+pansy
+petunia
+pine tree
+plant
+rose
+rose bush
+sapling
+shrub
+sugarcane
+sunflower
+thorny bush
+tree
+tulip
+vine
+wheat

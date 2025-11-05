@@ -1,0 +1,139 @@
+﻿actor
+alexander the great
+algebra teacher
+alchemist
+alicia keys
+allen iverson
+architect
+aristotle
+artist
+author
+baker
+barber
+bartender
+basketball player
+bassist
+benjamin franklin
+biologist
+blacksmith
+bodybuilder
+boss
+builder
+businessperson
+butcher
+carl sagan
+carpenter
+cashier
+ceo
+charles darwin
+charles barkley
+chef
+chemist
+civil engineer
+cleopatra
+coach
+comedian
+composer
+conductor
+construction worker
+cook
+counselor
+coworker
+dancer
+dave bing
+dave cowens
+dave debusschere
+david robinson
+dentist
+designer
+detective
+director
+doctor
+dominique wilkins
+driver
+duke ellington
+dwayne wade
+earl monroe
+einstein
+electrician
+elgin baylor
+elvin hayes
+engineer
+farmer
+firefighter
+flight attendant
+flight engineer
+friend
+galileo
+gandhi
+gardener
+gary payton
+george gervin
+george mikan
+giannis antetokounmpo
+guard
+hamilton
+james harden
+janitor
+julius caesar
+julius erving
+karl malone
+lawyer
+lebron james
+librarian
+machinist
+manager
+martin luther king jr
+mathematician
+mechanic
+michelangelo
+michael jordan
+miner
+model
+mozart
+musician
+napoleon
+neighbor
+nurse
+oscar robertson
+parent
+patrick ewing
+paul arizin
+paul pierce
+pete maravich
+philosopher
+photographer
+pilot
+plumber
+poet
+police officer
+president
+principal
+private
+professor
+psychologist
+queen
+ray allen
+reggie miller
+reporter
+robert parish
+scientist
+secretary
+server
+singer
+soccer player
+soldier
+student
+teacher
+technician
+tim duncan
+veterinarian
+volunteer
+waiter
+waitress
+walter reed
+wes unseld
+willis reed
+wilt chamberlain
+worker
+writer
