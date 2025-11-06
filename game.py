@@ -163,7 +163,7 @@ class QuestionsGame:
         return endpoint, objects
 
     # finds category that best splits the current possible nouns
-    def _calculate_category_scores(self):
+    def _calculate_category_scores(self) -> tuple:
         best_category = None
         max_score = -1
         print(self.possible_nouns)
@@ -195,7 +195,7 @@ class QuestionsGame:
         return (max_score, "category", best_category)
 
     # finds property that best splits the current possible nouns
-    def _calculate_property_scores(self):
+    def _calculate_property_scores(self) -> tuple:
         best_property = None
         max_score = -1
 
@@ -226,7 +226,7 @@ class QuestionsGame:
         return (max_score, "property", best_property)
 
     # finds metadata value that best splits the current possible nouns
-    def _score_metadata_questions(self):
+    def _score_metadata_questions(self) -> tuple:
         best_meta_prop = None
         best_threshold = None
         max_score = -1
@@ -277,7 +277,7 @@ class QuestionsGame:
         return (max_score, "metadata", metadata)
 
     # determine best type of guess for next question
-    def _find_best_guess(self):
+    def _find_best_guess(self) -> tuple:
         category = self._calculate_category_scores()
         property = self._calculate_property_scores()
         metadata = self._score_metadata_questions()
@@ -285,7 +285,7 @@ class QuestionsGame:
         return max([category, property, metadata])
 
     # create the question string based on best guess data
-    def _form_question(self, best_guess_data: tuple):
+    def _form_question(self, best_guess_data: tuple) -> str:
         score, q_type, q_data = best_guess_data
 
         if score <= 0:
