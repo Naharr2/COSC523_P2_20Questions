@@ -1,3 +1,4 @@
+import json
 import random
 import pickle
 import statistics
@@ -6,26 +7,32 @@ from pathlib import Path
 
 class QuestionsGame:
     def __init__(self) -> None:
-        # self.OBJECTS_DIR = Path.home()
-        self.nounFile = "noun_universe.txt"
-        self.nouns = self._get_nouns()
+        self.OBJECTS_DIR = Path.cwd()
+        self.ENDPOINT_TO_FILENAME = {
+            "living_food_items": "living_food_items.txt",
+            "non_animal_food_items": "Non-animal food items.txt",
+            "living_fantasy_wildlife": "Living fantasy-wildlife.txt",
+            "plants": "Plants.txt",
+            "person_role": "Person-role.txt",
+            "large_place_geography": "Large place_geography.txt",
+            "abstract": "Abstract ideas-objects-events.txt",
+            "natural_objects": "Natural Objects.txt",
+            "chemicals_nonconsumable": "Chemicals-non-consumable items.txt",
+            "common_items": "Common items.txt",
+            "uncommon_items": "Uncommon items.txt",
+        }
+
         self.propertiesFile = "property_universe.txt"
         self.properties = self._get_properties()
         self.questionsAsked = 0
-        # we can change these later, just using them for now
-        self.general_categories = [
-            "peron",
-            "place",
-            "thing",
-            "animal",
-            "plant",
-            "action",
-        ]
+
         self.lookupFile = "ontology.pickle"
         self.original_lookup_table = self._get_lookup_table()
         self.modified_lookup_table = self.original_lookup_table
-        self.possible_nouns = self.nouns
+        self.possible_nouns: list[str] = []
 
+    # loads context data from premade pickle file
+    # generated from OntologyGeneration.ipynb
     def _get_lookup_table(self) -> dict:
         try:
             with open(self.lookupFile, "rb") as f:
@@ -35,18 +42,13 @@ class QuestionsGame:
             print("Lookup table file not found. Please provide a table.")
             exit(1)
 
-    def _get_nouns(self) -> list[str]:
-        with open(self.nounFile, "r") as f:
-            nouns = f.read().splitlines()
-        return nouns
-
     def _get_properties(self) -> list[str]:
         with open(self.propertiesFile, "r") as f:
             properties = f.read().splitlines()
         return properties
 
     def error_no_nouns(self) -> bool:
-        if self.nouns == []:
+        if self.possible_nouns == []:
             print("Error: No nouns available to choose from.")
             return True
         return False
@@ -66,17 +68,104 @@ class QuestionsGame:
             response = input("Please respond with 'yes' or 'no': ").lower()
         return response
 
+    def _ask_yn(self, prompt: str) -> bool:
+        self.questionsAsked += 1
+        while True:
+            ans = (
+                input(f"Question {self.questionsAsked}: {prompt} (yes/no): ")
+                .strip()
+                .lower()
+            )
+            if ans in ("y", "yes"):
+                return True
+            if ans in ("n", "no"):
+                return False
+            print("Invalid response. Please answer 'yes' or 'no'.")
+
+    def _load_objects(self, filename: str) -> list[str]:
+        path = self.OBJECTS_DIR / filename
+        print(path)
+        if not path.exists():
+            print(f"Error: Required noun file not found: {path}")
+            return []
+        with path.open("r", encoding="utf-8-sig") as f:
+            items = [line.strip() for line in f if line.strip()]
+        return items
+
+    def _run_initial_questions(self) -> tuple[str, list[str]]:
+        # Q1
+        alive = self._ask_yn("Has it, or has it ever, been alive?")
+        if alive:
+            # Q2
+            person = self._ask_yn("Is it a person?")
+            if person:
+                endpoint = "person_role"
+            else:
+                # Q3
+                animal = self._ask_yn("Is it an animal?")
+                if animal:
+                    # Q4
+                    edible = self._ask_yn("Do people usually eat it?")
+                    endpoint = (
+                        "living_food_items"
+                        if edible
+                        else "living_fantasy_wildlife"
+                    )
+                else:
+                    endpoint = "plants"
+        else:
+            # Q5
+            place = self._ask_yn("Is it a place?")
+            if place:
+                endpoint = "large_place_geography"
+            else:
+                # Q6
+                physical = self._ask_yn("Is it a physical object?")
+                if not physical:
+                    endpoint = "abstract"
+                else:
+                    # Q7
+                    man_made = self._ask_yn("Is it man-made?")
+                    if not man_made:
+                        endpoint = "natural_objects"
+                    else:
+                        # Q8
+                        mechanical = self._ask_yn("Is it mechanical?")
+                        if mechanical:
+                            # Q9
+                            used_daily = self._ask_yn("Is it used daily?")
+                            endpoint = (
+                                "common_items"
+                                if used_daily
+                                else "uncommon_items"
+                            )
+                        else:
+                            # Q10
+                            can_eat = self._ask_yn("Can you eat it?")
+                            endpoint = (
+                                "non_animal_food_items"
+                                if can_eat
+                                else "chemicals_nonconsumable"
+                            )
+        filename = self.ENDPOINT_TO_FILENAME[endpoint]
+        objects = self._load_objects(filename)
+        print(
+            f"\n➡ Category: {endpoint}  |  File: {filename}  |  Loaded {len(objects)} objects."
+        )
+        return endpoint, objects
+
     # finds category that best splits the current possible nouns
     def _calculate_category_scores(self):
         best_category = None
         max_score = -1
-
+        print(self.possible_nouns)
         candidate_nouns = {
             noun: self.original_lookup_table[noun]
             for noun in self.possible_nouns
         }
         all_categories = set()
         for noun in self.possible_nouns:
+            print(noun)
             noun_data = self.original_lookup_table.get(noun, {})
             all_categories.update(noun_data.get("categories", []))
 
@@ -185,17 +274,17 @@ class QuestionsGame:
 
         return max([category, property, metadata])
 
-    def _form_question(self):
-        score, q_type, q_data = self._find_best_guess()
+    def _form_question(self, best_guess_data: tuple):
+        score, q_type, q_data = best_guess_data
 
         if score <= 0:
+            print(score, q_type, q_data)
             return "Bad score"  # no valid questions can be formed
         if q_type == "category":
             return f"Does it involve {q_data}?"
         elif q_type == "property":
             return f"Does it have the property of {q_data}?"
         elif q_type == "metadata":
-            # q_data may be None when no metadata question is available; guard against that
             if not q_data:
                 return "I'm not sure what to ask next."
             prop_name, threshold = q_data
@@ -203,30 +292,26 @@ class QuestionsGame:
         return "I'm not sure what to ask next."
 
     def _form_guess(self) -> str:
-        if self.questionsAsked == 0:
-            # beginning of the game, pick one of the general categories
-            category = random.choice(self.general_categories)
-            return f"Is it a {category}?"
-        elif self.questionsAsked < 20:
-            #  middle of the game, this will be based on our prev guesses and responses
-            return self._form_question()
-        else:
-            # end of game, must make a guess
-            # expected logic: if remaining nouns is 1, guess that noun
-            # else, pick a random noun from remaining nouns
-            if len(self.possible_nouns) == 1:
-                return f"Are you thinking of {self.possible_nouns[0]}?"
-            elif self.possible_nouns:  # More than 1 left, pick one
-                guess_noun = random.choice(self.possible_nouns)
-                return f"Are you thinking of {guess_noun}?"
-            else:  # No nouns left
-                return "I've run out of options and have no guess! You win."
+        if len(self.possible_nouns) == 1:
+            return f"Are you thinking of {self.possible_nouns[0]}?"
+        elif self.possible_nouns:  # More than 1 left, pick one
+            guess_noun = random.choice(self.possible_nouns)
+            return f"Are you thinking of {guess_noun}?"
+        else:  # No nouns left
+            return "I've run out of options and have no guess! You win."
 
     def _update_possible_nouns(
         self, question_data: tuple, response: str
     ) -> None:
         q_type, q_info = question_data[1], question_data[2]
         new_possible_nouns = []
+
+        if (
+            self.questionsAsked <= 10
+            and q_type == "category"
+            and question_data[0] == 0
+        ):
+            pass
 
         if response == "yes":
             for noun in self.possible_nouns:
@@ -269,9 +354,9 @@ class QuestionsGame:
         self.possible_nouns = new_possible_nouns
 
     def startGame(self) -> None:
-        if self.error_no_nouns() or self.error_no_properties():
+        if self.error_no_properties():
             exit(1)
-        self.guessable_nouns = self.nouns
+        self.possible_nouns = []
         self.questionsAsked = 0
 
         print("Welcome to Team 23's 20 Questions Game!\n")
@@ -284,31 +369,30 @@ class QuestionsGame:
         print("You can type 'exit' at any time to quit the game.\n")
         print("Ready? Let's begin!\n")
 
+        endpoint, self.possible_nouns = self._run_initial_questions()
+        with open("output.json", "w") as f:
+            json.dump(self.original_lookup_table, f, cls=SetEncoder, indent=2)
+
+        if self.error_no_nouns():
+            exit(1)
+
+        print(f"({len(self.possible_nouns)} possibilities remaining...)\n")
+
         best_question_data = None
         while self.questionsAsked <= 20:
             guess = ""
-            if self.questionsAsked == 0:
-                # Handle the first question (general category)
-                category = random.choice(self.general_categories)
-                guess = f"Is it a {category}?"
-                # This is a simple heuristic, so we'll just update based on it
-                best_question_data = (0, "category", category)
 
-            # Check for win condition (only 1 noun left)
-            elif len(self.possible_nouns) == 1:
-                print(f"I've got it! Only one possibility left.")
+            if len(self.possible_nouns) == 1:
                 break  # Exit loop to make final guess
-
-            # Check for lose condition (no nouns left)
             elif not self.possible_nouns:
-                print("I've run out of options! You win.")
-                return  # Exit game
-
+                print(
+                    "I've run out of options, something must have gone wrong!"
+                )
+                return
             else:
                 # Find the best question to ask
                 best_question_data = self._find_best_guess()
-                # FIX: Pass the data to _form_question
-                guess = self._form_question()
+                guess = self._form_question(best_question_data)
 
                 if guess == "I am stuck and cannot form a new question.":
                     print(guess)
@@ -328,8 +412,7 @@ class QuestionsGame:
             self.questionsAsked += 1
             print(f"({len(self.possible_nouns)} possibilities remaining...)\n")
 
-        # --- End of Loop: Make Final Guess ---
-        print("\nOkay, I've asked 20 questions. Time for my final guess!")
+        # final guess
         final_guess = self._form_guess()
         print(final_guess)
 
@@ -341,7 +424,14 @@ class QuestionsGame:
         if validated_response == "yes":
             print("I win! Thanks for playing.")
         else:
-            print("Darn! You win.")
+            print("You win.")
+
+
+class SetEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, set):
+            return list(o)  # Convert set to list
+        return json.JSONEncoder.default(self, o)
 
 
 if __name__ == "__main__":
