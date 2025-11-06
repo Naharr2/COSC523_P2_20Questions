@@ -42,23 +42,28 @@ class QuestionsGame:
             print("Lookup table file not found. Please provide a table.")
             exit(1)
 
+    # load properties from given file
     def _get_properties(self) -> list[str]:
         with open(self.propertiesFile, "r") as f:
             properties = f.read().splitlines()
         return properties
 
+    # error context if no nouns load at beginning of game
     def error_no_nouns(self) -> bool:
         if self.possible_nouns == []:
             print("Error: No nouns available to choose from.")
             return True
         return False
 
+    # error context if no properties load at beginning of game
     def error_no_properties(self) -> bool:
         if self.properties == []:
             print("Error: No properties available to choose from.")
             return True
         return False
 
+    # checks if user wants to exit game, or if response is not yes or no
+    # TODO: do we need this, or does _ask_yn cover this?
     def _validate_user_response(self, response: str) -> str:
         response = response.lower()
         if response == "exit":
@@ -68,6 +73,7 @@ class QuestionsGame:
             response = input("Please respond with 'yes' or 'no': ").lower()
         return response
 
+    # updates question count, asks question, gets user response
     def _ask_yn(self, prompt: str) -> bool:
         self.questionsAsked += 1
         while True:
@@ -82,6 +88,7 @@ class QuestionsGame:
                 return False
             print("Invalid response. Please answer 'yes' or 'no'.")
 
+    # loads narrowed down list of objects/nouns based on initial questions
     def _load_objects(self, filename: str) -> list[str]:
         path = self.OBJECTS_DIR / filename
         print(path)
@@ -92,6 +99,7 @@ class QuestionsGame:
             items = [line.strip() for line in f if line.strip()]
         return items
 
+    # decision tree for narrowing down nouns for first few questions
     def _run_initial_questions(self) -> tuple[str, list[str]]:
         # Q1
         alive = self._ask_yn("Has it, or has it ever, been alive?")
@@ -217,6 +225,7 @@ class QuestionsGame:
 
         return (max_score, "property", best_property)
 
+    # finds metadata value that best splits the current possible nouns
     def _score_metadata_questions(self):
         best_meta_prop = None
         best_threshold = None
@@ -267,6 +276,7 @@ class QuestionsGame:
 
         return (max_score, "metadata", metadata)
 
+    # determine best type of guess for next question
     def _find_best_guess(self):
         category = self._calculate_category_scores()
         property = self._calculate_property_scores()
@@ -274,6 +284,7 @@ class QuestionsGame:
 
         return max([category, property, metadata])
 
+    # create the question string based on best guess data
     def _form_question(self, best_guess_data: tuple):
         score, q_type, q_data = best_guess_data
 
@@ -291,6 +302,7 @@ class QuestionsGame:
             return f"Is its '{prop_name}' value considered high (e.g., more than {threshold:.2f})?"
         return "I'm not sure what to ask next."
 
+    # TODO: maybe this needs to be renamed to _form_final_guess?
     def _form_guess(self) -> str:
         if len(self.possible_nouns) == 1:
             return f"Are you thinking of {self.possible_nouns[0]}?"
@@ -300,6 +312,7 @@ class QuestionsGame:
         else:  # No nouns left
             return "I've run out of options and have no guess! You win."
 
+    # updates possible nouns based on user response
     def _update_possible_nouns(
         self, question_data: tuple, response: str
     ) -> None:
@@ -353,6 +366,7 @@ class QuestionsGame:
 
         self.possible_nouns = new_possible_nouns
 
+    # actual gameplay
     def startGame(self) -> None:
         if self.error_no_properties():
             exit(1)
@@ -370,8 +384,10 @@ class QuestionsGame:
         print("Ready? Let's begin!\n")
 
         endpoint, self.possible_nouns = self._run_initial_questions()
-        with open("output.json", "w") as f:
-            json.dump(self.original_lookup_table, f, cls=SetEncoder, indent=2)
+        # uncomment below to check the pickle file
+        # TODO: remove before submission
+        # with open("output.json", "w") as f:
+        #     json.dump(self.original_lookup_table, f, cls=SetEncoder, indent=2)
 
         if self.error_no_nouns():
             exit(1)
@@ -427,6 +443,8 @@ class QuestionsGame:
             print("You win.")
 
 
+# helper class for making sets printable in JSON
+# TODO: remove before submission
 class SetEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, set):
